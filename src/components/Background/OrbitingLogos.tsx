@@ -1,43 +1,35 @@
 "use client";
 
 import React from "react";
-import { IconCloud } from "@/components/magicui/icon-cloud";
+import OrbitingSkills from "@/components/orbiting-skills";
 import { useIDEWindow } from "@/contexts/IDEWindowContext";
-
-// Technology slugs mapped to simpleicons.org icons
-const slugs = [
-  "nextdotjs",      // Next.js
-  "python",         // Python  
-  "typescript",     // TypeScript
-  "react",          // React
-  "tailwindcss",    // Tailwind CSS
-  "javascript",     // JavaScript
-  "salesforce",     // Salesforce
-  "html5",          // HTML5
-  "mongodb",        // MongoDB
-  "postgresql",     // PostgreSQL
-  "css3",           // CSS3
-];
 
 export function OrbitingLogos() {
   const { windowSize } = useIDEWindow();
-  const images = slugs.map(
-    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}.svg`,
-  );
 
   // Use IDE window width to determine if we should show large or small version
   const isLargeWindow = windowSize.width >= 1400;
+  
+  // Calculate size based on available space
+  // For large windows: use up to 500px but ensure it fits in the flex container
+  // For small windows: use responsive sizing but cap at 450px
+  const containerSize = isLargeWindow 
+    ? Math.min(500, Math.max(400, (windowSize.width * 0.4)))
+    : Math.min(450, Math.max(350, windowSize.width - 100));
 
   return (
     <div 
-      className="relative flex items-center justify-center transform"
+      className="relative flex items-center justify-center"
       style={{
-        height: isLargeWindow ? '700px' : '400px',
-        width: isLargeWindow ? '700px' : '400px',
-        transform: isLargeWindow ? 'scale(1.25)' : 'scale(1)',
+        height: `${containerSize}px`,
+        width: `${containerSize}px`,
+        maxWidth: '100%',
+        maxHeight: '100%',
+        minWidth: '350px',
+        minHeight: '350px',
       }}
     >
-      <IconCloud images={images} />
+      <OrbitingSkills />
     </div>
   );
 }

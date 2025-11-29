@@ -52,7 +52,7 @@ export function IDELayout({ children }: { children: React.ReactNode }) {
                   <div className="flex h-full flex-col">
                     <Tabs />
                     <div className="flex flex-1 overflow-y-auto bg-gray-800">
-                      <main className="w-full max-w-full overflow-x-hidden px-4">
+                      <main className="w-full max-w-full overflow-x-hidden px-4 min-h-full">
                         {children}
                       </main>
                     </div>
