@@ -59,7 +59,7 @@ export async function getGitHubProfile() {
       },
       body: JSON.stringify({
         query: GITHUB_PROFILE_QUERY,
-        variables: { userName: "xCarter93" },
+        variables: { userName: "KunalGupta25" },
       }),
     });
 
@@ -85,7 +85,7 @@ export async function getGitHubContributions() {
       },
       body: JSON.stringify({
         query: GITHUB_CONTRIBUTIONS_QUERY,
-        variables: { userName: "xCarter93" },
+        variables: { userName: "KunalGupta25" },
       }),
     });
 
@@ -103,7 +103,7 @@ export async function getGitHubContributions() {
 
 export async function getGitHistory() {
   try {
-    const owner = "xCarter93";
+    const owner = "KunalGupta25";
     const repo = "nextjs-portfolio-app";
     const response = await fetch(
       `https://api.github.com/repos/${owner}/${repo}/commits`,
@@ -219,6 +219,6 @@ export async function getAstronomyData() {
     return await response.json();
   } catch (error) {
     console.error("Error fetching astronomy data:", error);
-    throw new Error("Failed to fetch astronomy data");
+    return null;
   }
 }

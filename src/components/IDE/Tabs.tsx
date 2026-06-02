@@ -12,7 +12,6 @@ import { VscodeIconsFileTypeCss } from "../Icons/VscodeIconsFileTypeCss";
 import { CatppuccinMarkdown } from "../Icons/CatppuccinMarkdown";
 import { VscodeIconsFileTypeDotenv } from "../Icons/VscodeIconsFileTypeDotenv";
 import { SkillIconsReactDark } from "../Icons/SkillIconsReactDark";
-import { VscodeIconsFileTypeGit } from "../Icons/VscodeIconsFileTypeGit";
 
 const NAVIGATION_ITEMS = [
   { name: "home.html", path: "/", icon: SkillIconsHtml },
@@ -34,11 +33,6 @@ const NAVIGATION_ITEMS = [
     icon: VscodeIconsFileTypeDotenv,
   },
   { name: "guest-book.tsx", path: "/guest-book", icon: SkillIconsReactDark },
-  {
-    name: "git-history.git",
-    path: "/git-history",
-    icon: VscodeIconsFileTypeGit,
-  },
 ];
 
 export function Tabs() {

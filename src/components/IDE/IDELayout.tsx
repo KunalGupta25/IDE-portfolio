@@ -12,7 +12,15 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 
-export function IDELayout({ children }: { children: React.ReactNode }) {
+export function IDELayout({ 
+  children,
+  footerConfig,
+  siteTitle = "Portfolio - VS Code",
+}: { 
+  children: React.ReactNode;
+  footerConfig?: any;
+  siteTitle?: string;
+}) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -31,7 +39,7 @@ export function IDELayout({ children }: { children: React.ReactNode }) {
               <div className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
             </div>
             <div className="ml-3 select-none text-xs text-gray-400">
-              Portfolio - VS Code
+              {siteTitle}
             </div>
           </div>
 
@@ -64,7 +72,7 @@ export function IDELayout({ children }: { children: React.ReactNode }) {
 
           {/* Footer */}
           <div className="hidden sm:block">
-            <Footer />
+            <Footer config={footerConfig} />
           </div>
         </DraggableWindow>
       </div>

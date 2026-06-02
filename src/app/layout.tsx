@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import CelestialObjectWrapper from "@/components/CelestialObjectWrapper";
 import DatadogInit from "@/components/datadog/datadog-init";
+import { getProfile, getSiteConfig } from "@/lib/content-fetchers";
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
@@ -18,11 +19,16 @@ export const metadata: Metadata = {
   description: "A developer portfolio styled like a modern IDE",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const profile = await getProfile();
+  const githubBranch = await getSiteConfig("githubBranch");
+  const wakatimeBadgeUrl = await getSiteConfig("wakatimeBadgeUrl");
+  const siteTitle = await getSiteConfig("siteTitle");
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -34,7 +40,16 @@ export default function RootLayout({
         <CelestialObjectWrapper />
         <ClerkProvider>
           <TabsProvider>
-            <IDELayout>
+            <IDELayout 
+              footerConfig={{
+                githubBranch,
+                salesforceUrl: profile.salesforceUrl,
+                linkedinUrl: profile.linkedinUrl,
+                wakatimeBadgeUrl,
+                githubUrl: profile.githubUrl,
+              }}
+              siteTitle={siteTitle}
+            >
               {children}
               <SpeedInsights />
               <Analytics />

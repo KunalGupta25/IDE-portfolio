@@ -4,7 +4,7 @@ import React from "react";
 import OrbitingSkills from "@/components/orbiting-skills";
 import { useIDEWindow } from "@/contexts/IDEWindowContext";
 
-export function OrbitingLogos() {
+export function OrbitingLogos({ skills }: { skills?: any[] }) {
   const { windowSize } = useIDEWindow();
 
   // Use IDE window width to determine if we should show large or small version
@@ -29,7 +29,7 @@ export function OrbitingLogos() {
         minHeight: '350px',
       }}
     >
-      <OrbitingSkills />
+      <OrbitingSkills skills={skills} />
     </div>
   );
 }

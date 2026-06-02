@@ -145,6 +145,15 @@ const iconComponents: Record<IconType, { component: () => React.JSX.Element; col
       </svg>
     ),
     color: '#336791'
+  },
+  huggingface: {
+    component: () => (
+      <svg viewBox="0 0 256 256" fill="currentColor" className="w-full h-full">
+        <rect width="256" height="256" fill="#FFD21E" rx="60"/>
+        <text x="50%" y="55%" fontSize="160" textAnchor="middle" dominantBaseline="middle">🤗</text>
+      </svg>
+    ),
+    color: '#FFD21E'
   }
 };
 
@@ -368,7 +377,7 @@ const GlowingOrbitPath = memo(({ radius, glowColor = 'cyan', animationDelay = 0 
 GlowingOrbitPath.displayName = 'GlowingOrbitPath';
 
 // --- Main App Component ---
-export default function OrbitingSkills() {
+export default function OrbitingSkills({ skills = skillsConfig }: { skills?: SkillConfig[] }) {
   const [time, setTime] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -395,6 +404,37 @@ export default function OrbitingSkills() {
     { radius: 140, glowColor: 'purple', delay: 0.75 },
     { radius: 180, glowColor: 'purple', delay: 1.5 }
   ];
+
+  // Map DB skills to their orbit radius based on orbitLevel
+  const mappedSkills = skills.map((skill: any, index) => {
+    let radius = 100;
+    let speed = 1;
+    let glowColor: GlowColor = 'cyan';
+    
+    if (skill.orbitLevel === 2) {
+      radius = 140;
+      speed = -0.7;
+      glowColor = 'purple';
+    } else if (skill.orbitLevel === 3) {
+      radius = 180;
+      speed = 0.5;
+      glowColor = 'purple';
+    }
+
+    // Default sizing based on existing logic
+    const size = skill.iconType === 'css' || skill.iconType === 'react' || skill.iconType === 'nextjs' || skill.iconType === 'typescript' || skill.iconType === 'python' || skill.iconType === 'salesforce' || skill.iconType === 'mongodb' || skill.iconType === 'postgresql' ? 45 : 40;
+    
+    return {
+      id: skill.id || skill.label,
+      orbitRadius: radius,
+      size,
+      speed,
+      iconType: (skill.iconType || 'html') as IconType,
+      phaseShift: (index * (Math.PI * 2)) / Math.max(1, skills.filter((s: any) => s.orbitLevel === skill.orbitLevel).length),
+      glowColor,
+      label: skill.label
+    };
+  });
 
   return (
     <main className="w-full h-full flex items-center justify-center overflow-hidden relative bg-gray-800">
@@ -449,7 +489,7 @@ export default function OrbitingSkills() {
         ))}
 
         {/* Render orbiting skill icons */}
-        {skillsConfig.map((config) => {
+        {mappedSkills.map((config) => {
           const angle = time * config.speed + (config.phaseShift || 0);
           return (
             <OrbitingSkill

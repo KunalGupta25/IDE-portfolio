@@ -67,7 +67,7 @@ export function StyledCode({ code, language = "json" }: StyledCodeProps) {
   }, [code, language]);
 
   return (
-    <div className={`${jetbrainsMono.className} overflow-hidden`}>
+    <div className={`styled-code-wrapper ${jetbrainsMono.className} overflow-hidden`}>
       <pre className="rounded-lg p-4 text-sm">
         <code className={`language-${language}`}>{code}</code>
       </pre>
@@ -133,13 +133,13 @@ export function StyledCode({ code, language = "json" }: StyledCodeProps) {
         .language-typescript .token.type {
           color: #66d9ef;
         }
-        pre[class*="language-"] {
+        .styled-code-wrapper pre[class*="language-"] {
           background: transparent;
           margin: 0;
           padding: 1rem;
           overflow: auto;
         }
-        code[class*="language-"] {
+        .styled-code-wrapper code[class*="language-"] {
           background: transparent;
           white-space: pre-wrap;
           word-break: break-word;

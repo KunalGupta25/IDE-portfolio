@@ -1,8 +1,20 @@
 import { StyledCode } from "@/components/StyledCode";
-import { contactCode } from "@/markdown/contact";
 import { ContactForm } from "@/components/ContactForm";
+import { getProfile } from "@/lib/content-fetchers";
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const profile = await getProfile();
+  
+  const contactCode = `{
+  "socials": {
+    "email": "${profile.email}",
+    "github": "${profile.githubUrl}",
+    "linkedin": "${profile.linkedinUrl}"
+  },
+  "location": "${profile.location}",
+  "availability": "${profile.availability}"
+}`;
+
   return (
     <div className="text-gray-300">
       <div className="relative lg:grid lg:grid-cols-2 lg:gap-8">

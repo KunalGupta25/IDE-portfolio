@@ -34,7 +34,7 @@ function LastUpdated() {
   );
 }
 
-export function Footer() {
+export function Footer({ config }: { config?: any }) {
   const router = useRouter();
   const { addTab } = useTabsContext();
 
@@ -52,44 +52,52 @@ export function Footer() {
     <div className="fixed bottom-0 left-0 right-0 flex h-6 items-center justify-between border-t border-gray-800 bg-[#1f1f1f] px-3 text-[11px] text-gray-400">
       <div className="flex items-center gap-3">
         <Image src="/PC_Favicon.png" alt="PC Logo" width={16} height={16} />
-        <Link
-          href="https://github.com/xCarter93"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 hover:text-gray-300"
-        >
-          <GitBranchIcon size={12} />
-          <span>main</span>
-        </Link>
-        <Link
-          href="https://www.salesforce.com/trailblazer/pcarter8"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center hover:text-gray-300"
-        >
-          <SiSalesforce size={14} />
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/patrick-carter-306746a8/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center hover:text-gray-300"
-        >
-          <SiLinkedin size={14} />
-        </Link>
+        {config?.githubUrl && (
+          <Link
+            href={config.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 hover:text-gray-300"
+          >
+            <GitBranchIcon size={12} />
+            <span>{config?.githubBranch || "main"}</span>
+          </Link>
+        )}
+        {config?.salesforceUrl && (
+          <Link
+            href={config.salesforceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center hover:text-gray-300"
+          >
+            <SiSalesforce size={14} />
+          </Link>
+        )}
+        {config?.linkedinUrl && (
+          <Link
+            href={config.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center hover:text-gray-300"
+          >
+            <SiLinkedin size={14} />
+          </Link>
+        )}
         <Link
           href="/coding-stats"
           className="flex items-center hover:text-gray-300"
           title="Coding Stats"
           onClick={handleStatsClick}
         >
-          <Image
-            src="https://wakatime.com/badge/user/80aca99d-fb3d-4239-8ed6-9f39fbcab253.svg"
-            alt="Total time coded"
-            width={100}
-            height={16}
-            className="h-4 w-auto"
-          />
+          {config?.wakatimeBadgeUrl && (
+            <Image
+              src={config.wakatimeBadgeUrl}
+              alt="Total time coded"
+              width={100}
+              height={16}
+              className="h-4 w-auto"
+            />
+          )}
         </Link>
         <LastUpdated />
       </div>

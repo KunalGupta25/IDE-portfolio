@@ -28,3 +28,88 @@ model User {
     image            String?
     guestBookEntries GuestBookEntry[]
 }
+
+model ProfileContent {
+    id            String   @id @default("singleton")
+    name          String   @default("Your Name")
+    title         String   @default("Full Stack Developer")
+    tagline       String   @default("I build elegant solutions...")
+    bio           String   @default("Hi, I'm...")
+    bioExtended   String   @default("")
+    aboutContent  String   @default("")
+    educationContent String @default("")
+    currentCompany String  @default("Your Company")
+    yearsOfExperience Int  @default(1)
+    location      String   @default("City, State")
+    email         String   @default("you@example.com")
+    phone         String   @default("")
+    availability  String   @default("Open to opportunities")
+    githubUrl     String   @default("")
+    linkedinUrl   String   @default("")
+    salesforceUrl String   @default("")
+    portfolioUrl  String   @default("")
+    updatedAt     DateTime @updatedAt
+}
+
+model WorkExperience {
+    id          String   @id @default(cuid())
+    period      String
+    role        String
+    company     String
+    description String
+    order       Int      @default(0)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model Project {
+    id         String   @id @default(cuid())
+    slug       String   @unique
+    title      String
+    summary    String
+    image      String   @default("")
+    technology String
+    content    String   @default("") // Markdown body
+    liveUrl    String   @default("")
+    githubUrl  String   @default("")
+    order      Int      @default(0)
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+}
+
+model Certification {
+    id        String   @id @default(cuid())
+    name      String
+    image     String
+    link      String   @default("")
+    order     Int      @default(0)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Skill {
+    id            String  @id @default(cuid())
+    label         String
+    iconType      String
+    orbitLevel    Int     @default(1)
+    showInOrbit   Boolean @default(true)
+    showInSnippet Boolean @default(false)
+    aboutCategory String?
+    order         Int     @default(0)
+}
+
+model SiteConfig {
+    id    String @id
+    value String
+}
+
+model Education {
+    id          String   @id @default(cuid())
+    degree      String
+    school      String
+    period      String
+    description String
+    order       Int      @default(0)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}

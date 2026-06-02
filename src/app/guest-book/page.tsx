@@ -6,8 +6,8 @@ import prisma from "@/lib/prisma";
 import { createPost } from "@/lib/actions";
 
 export const metadata: Metadata = {
-  title: "Guest Book | Patrick Carter",
-  description: "Sign my guest book and leave a message",
+  title: "Guest Book | Kunal Gupta",
+  description: "Leave a message in my guest book",
 };
 
 const getPosts = unstable_cache(

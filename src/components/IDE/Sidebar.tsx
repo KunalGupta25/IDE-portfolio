@@ -15,7 +15,6 @@ export function Sidebar() {
         <Tree contentTree="Other Cool Stuff" defaultCollapsed={false}>
           <Tree contentTree="coding-stats.env" path="/coding-stats" />
           <Tree contentTree="guest-book.tsx" path="/guest-book" />
-          <Tree contentTree="git-history.git" path="/git-history" />
         </Tree>
       </div>
     </div>

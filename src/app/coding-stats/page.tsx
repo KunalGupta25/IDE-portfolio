@@ -7,7 +7,7 @@ import { getGitHubProfile, getGitHubContributions } from "@/lib/actions";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Coding Stats | Patrick Carter",
+  title: "Coding Stats | Kunal Gupta",
   description: "View my coding statistics and activity",
 };
 
