@@ -12,7 +12,8 @@ async function main() {
       label: "Hugging Face",
       iconType: "huggingface",
       orbitLevel: 3,
-      enabled: true,
+      showInOrbit: true,
+      showInSnippet: false,
       order: (lastSkill?.order || 0) + 1,
     }
   });

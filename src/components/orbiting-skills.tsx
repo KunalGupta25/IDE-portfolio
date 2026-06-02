@@ -2,7 +2,7 @@
 import React, { useEffect, useState, memo } from 'react';
 
 // --- Type Definitions ---
-type IconType = 'html' | 'css' | 'javascript' | 'react' | 'nextjs' | 'tailwind' | 'typescript' | 'python' | 'salesforce' | 'mongodb' | 'postgresql';
+type IconType = 'html' | 'css' | 'javascript' | 'react' | 'nextjs' | 'tailwind' | 'typescript' | 'python' | 'salesforce' | 'mongodb' | 'postgresql' | 'huggingface';
 
 type GlowColor = 'cyan' | 'purple';
 
