@@ -14,6 +14,7 @@ import { CatppuccinMarkdown } from "../Icons/CatppuccinMarkdown";
 import { VscodeIconsFileTypeDotenv } from "../Icons/VscodeIconsFileTypeDotenv";
 import { SkillIconsReactDark } from "../Icons/SkillIconsReactDark";
 import { VscodeIconsFileTypeGit } from "../Icons/VscodeIconsFileTypeGit";
+import { SkillIconsPythonDark } from "../Icons/SkillIconsPythonDark";
 
 interface TreeProps {
   contentTree: string;
@@ -59,6 +60,9 @@ export function Tree({
     }
     if (fileName.endsWith(".git")) {
       return <VscodeIconsFileTypeGit className="h-4 w-4 shrink-0" />;
+    }
+    if (fileName.endsWith(".py")) {
+      return <SkillIconsPythonDark className="h-4 w-4 shrink-0" />;
     }
     return null;
   };

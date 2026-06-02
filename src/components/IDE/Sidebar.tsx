@@ -10,6 +10,7 @@ export function Sidebar() {
           <Tree contentTree="contact.json" path="/contact" />
           <Tree contentTree="projects.css" path="/projects" />
           <Tree contentTree="work-experience.md" path="/work-experience" />
+          <Tree contentTree="certifications.py" path="/certifications" />
         </Tree>
 
         <Tree contentTree="Other Cool Stuff" defaultCollapsed={false}>

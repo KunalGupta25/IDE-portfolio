@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useTabsContext } from "@/contexts/TabsContext";
-import { X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { FileText, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { SkillIconsHtml } from "../Icons/SkillIconsHtml";
 import { SkillIconsTypescript } from "../Icons/SkillIconsTypescript";
@@ -12,6 +12,7 @@ import { VscodeIconsFileTypeCss } from "../Icons/VscodeIconsFileTypeCss";
 import { CatppuccinMarkdown } from "../Icons/CatppuccinMarkdown";
 import { VscodeIconsFileTypeDotenv } from "../Icons/VscodeIconsFileTypeDotenv";
 import { SkillIconsReactDark } from "../Icons/SkillIconsReactDark";
+import { SkillIconsPythonDark } from "../Icons/SkillIconsPythonDark";
 
 const NAVIGATION_ITEMS = [
   { name: "home.html", path: "/", icon: SkillIconsHtml },
@@ -33,6 +34,7 @@ const NAVIGATION_ITEMS = [
     icon: VscodeIconsFileTypeDotenv,
   },
   { name: "guest-book.tsx", path: "/guest-book", icon: SkillIconsReactDark },
+  { name: "certifications.py", path: "/certifications", icon: SkillIconsPythonDark },
 ];
 
 export function Tabs() {
