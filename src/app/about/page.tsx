@@ -2,7 +2,7 @@ import { StyledCode } from "@/components/StyledCode";
 import prisma from "@/lib/prisma";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents as getMDXComponents } from "../../../mdx-components";
-import { getSkills, getEducation } from "@/lib/content-fetchers";
+import { getSkills, getEducation, getBadges } from "@/lib/content-fetchers";
 import Image from "next/image";
 
 export default async function AboutPage() {
@@ -12,6 +12,7 @@ export default async function AboutPage() {
 
   const skills = await getSkills();
   const education = await getEducation();
+  const badges = await getBadges();
   const components = getMDXComponents({});
 
   const generateDeveloperCode = () => {
@@ -90,6 +91,27 @@ ${formattedSkills}
             </div>
           )}
 
+          {/* Badges Section */}
+          {badges.length > 0 && (
+            <div>
+              <h2 className="mb-3 text-xl font-semibold text-slate-200">
+                Badges
+              </h2>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {badges.map((badge) => (
+                  <a key={badge.id} href={badge.link || "#"} target="_blank" rel="noopener noreferrer" className="block">
+                    <Image 
+                      src={badge.image} 
+                      alt={badge.name} 
+                      width={150} 
+                      height={150} 
+                      className="rounded-lg transition-transform hover:scale-105" 
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Education Section */}
           {education.length > 0 && (

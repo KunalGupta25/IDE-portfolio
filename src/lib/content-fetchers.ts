@@ -56,6 +56,13 @@ export async function getCertifications() {
   return certs;
 }
 
+export async function getBadges() {
+  const badges = await prisma.badge.findMany({
+    orderBy: { order: "asc" },
+  });
+  return badges;
+}
+
 export async function getSkills() {
   const skills = await prisma.skill.findMany({
     orderBy: { order: "asc" },

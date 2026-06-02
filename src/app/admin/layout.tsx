@@ -30,6 +30,7 @@ export default async function AdminLayout({
     { name: "Projects", href: "/admin/projects", icon: Folder },
     { name: "About Page", href: "/admin/about", icon: User },
     { name: "Certifications", href: "/admin/certifications", icon: Award },
+    { name: "Badges", href: "/admin/badges", icon: Award },
     { name: "Skills", href: "/admin/skills", icon: Code },
     { name: "Site Config", href: "/admin/site-config", icon: Settings },
   ];

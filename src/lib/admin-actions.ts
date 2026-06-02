@@ -220,3 +220,26 @@ export async function uploadImage(formData: FormData) {
   
   return `/uploads/${fileName}`;
 }
+
+export async function addBadge(data: any) {
+  if (!(await isAdmin())) throw new Error("Unauthorized");
+  const badge = await prisma.badge.create({ data });
+  revalidatePath("/about");
+  revalidatePath("/admin/badges");
+  return badge;
+}
+
+export async function updateBadge(id: string, data: any) {
+  if (!(await isAdmin())) throw new Error("Unauthorized");
+  const badge = await prisma.badge.update({ where: { id }, data });
+  revalidatePath("/about");
+  revalidatePath("/admin/badges");
+  return badge;
+}
+
+export async function deleteBadge(id: string) {
+  if (!(await isAdmin())) throw new Error("Unauthorized");
+  await prisma.badge.delete({ where: { id } });
+  revalidatePath("/about");
+  revalidatePath("/admin/badges");
+}
