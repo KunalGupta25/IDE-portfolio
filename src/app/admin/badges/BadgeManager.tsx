@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { addBadge, updateBadge, deleteBadge } from "@/lib/admin-actions";
-import { uploadImage } from "@/lib/admin-actions";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -30,21 +29,11 @@ export default function BadgeManager({ initialData }: { initialData: any[] }) {
     e.preventDefault();
     setLoading(true);
     const formData = new FormData(e.currentTarget);
-    const file = formData.get("file") as File;
-    
-    let imageUrl = formData.get("existingImage") as string;
-    
     try {
-      if (file && file.size > 0) {
-        const uploadFormData = new FormData();
-        uploadFormData.append("file", file);
-        imageUrl = await uploadImage(uploadFormData);
-      }
-
       const data = {
         name: formData.get("name") as string,
         link: formData.get("link") as string,
-        image: imageUrl,
+        image: formData.get("imageUrl") as string,
       };
 
       if (id) {
@@ -77,9 +66,8 @@ export default function BadgeManager({ initialData }: { initialData: any[] }) {
         </div>
       </div>
       <div>
-        <label className="mb-1 block text-sm text-gray-400">Upload Image</label>
-        <input type="file" name="file" accept="image/*" className="w-full text-white" />
-        <input type="hidden" name="existingImage" value={badge?.image || ""} />
+        <label className="mb-1 block text-sm text-gray-400">Image URL</label>
+        <input required name="imageUrl" defaultValue={badge?.image} className="w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 text-white" placeholder="https://..." />
         {badge?.image && (
           <div className="mt-2">
             <span className="text-xs text-gray-400">Current Image:</span>
