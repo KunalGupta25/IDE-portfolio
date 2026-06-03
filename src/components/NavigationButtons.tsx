@@ -37,7 +37,7 @@ export function NavigationButtons() {
         Get in Touch
       </Link>
       <a
-        href="/Patrick_Carter_Resume.pdf"
+        href="/Kunal_Gupta_Resume.pdf"
         download
         className="rounded border border-[#18B4C8] px-4 py-2 text-[#18B4C8] transition-colors hover:bg-[#18B4C8] hover:text-gray-900"
       >
