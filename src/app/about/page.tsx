@@ -100,13 +100,19 @@ ${formattedSkills}
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {badges.map((badge) => (
                   <a key={badge.id} href={badge.link || "#"} target="_blank" rel="noopener noreferrer" className="block">
-                    <Image 
-                      src={badge.image} 
-                      alt={badge.name} 
-                      width={150} 
-                      height={150} 
-                      className="rounded-lg transition-transform hover:scale-105" 
-                    />
+                    {badge.image ? (
+                      <Image 
+                        src={badge.image} 
+                        alt={badge.name} 
+                        width={150} 
+                        height={150} 
+                        className="rounded-lg transition-transform hover:scale-105" 
+                      />
+                    ) : (
+                      <div className="flex h-[150px] w-[150px] items-center justify-center rounded-lg bg-gray-800 text-sm text-gray-400 border border-gray-700 transition-transform hover:scale-105 text-center p-2">
+                        {badge.name}
+                      </div>
+                    )}
                   </a>
                 ))}
               </div>

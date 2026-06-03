@@ -68,7 +68,7 @@ export default function BadgeManager({ initialData }: { initialData: any[] }) {
       <div>
         <label className="mb-1 block text-sm text-gray-400">Image URL</label>
         <input required name="imageUrl" defaultValue={badge?.image} className="w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 text-white" placeholder="https://..." />
-        {badge?.image && (
+        {badge?.image && badge.image.trim() !== "" && (
           <div className="mt-2">
             <span className="text-xs text-gray-400">Current Image:</span>
             <Image src={badge.image} alt="preview" width={100} height={100} className="mt-1 rounded" />
@@ -98,7 +98,11 @@ export default function BadgeManager({ initialData }: { initialData: any[] }) {
               <FormEditor badge={badge} />
             ) : (
               <Card className="flex flex-col items-center border-gray-700 bg-gray-800 p-4 text-center">
-                <Image src={badge.image} alt={badge.name} width={100} height={100} className="mb-4 rounded-lg" />
+                {badge.image ? (
+                  <Image src={badge.image} alt={badge.name} width={100} height={100} className="mb-4 rounded-lg" />
+                ) : (
+                  <div className="mb-4 flex h-[100px] w-[100px] items-center justify-center rounded-lg bg-gray-700 text-xs text-gray-400">No Image</div>
+                )}
                 <h3 className="font-semibold text-white mb-2">{badge.name}</h3>
                 <div className="mt-auto flex items-center gap-2">
                   <Button variant="ghost" size="icon" className="text-blue-400" onClick={() => setEditingId(badge.id)}>
