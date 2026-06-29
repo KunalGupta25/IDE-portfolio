@@ -6,7 +6,7 @@ import { IDELayout } from "@/components/IDE/IDELayout";
 import ParticlesBackground from "@/components/Background/ParticlesBackground";
 import { ClerkProvider } from "@clerk/nextjs";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
 import CelestialObjectWrapper from "@/components/CelestialObjectWrapper";
 import DatadogInit from "@/components/datadog/datadog-init";

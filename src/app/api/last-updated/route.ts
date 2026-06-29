@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 // This will be set at build time
-const BUILD_DATE = '2026-06-03T02:20:36.333Z';
+const BUILD_DATE = '2026-06-29T05:16:40.944Z';
 
 export async function GET() {
   try {
