@@ -24,7 +24,7 @@
     "@radix-ui/react-slot": "^1.1.1",
     "@types/mdx": "^2.0.13",
     "@uiw/react-md-editor": "^4.1.1",
-    "@vercel/analytics": "^1.4.1",
+    "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^1.1.0",
     "ag-grid-react": "^33.0.3",
     "class-variance-authority": "^0.7.1",
